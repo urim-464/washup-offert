@@ -301,8 +301,7 @@
 
 function handleSubmit(e) {
   e.preventDefault();
-  fetch('https://formsubmit.co/nadi@post.com', {
-    method: 'POST',
+    <form action="https://formsubmit.co/nadi@post.com" method="POST"
     body: new FormData(form)
   }).then(() => {
     const success = document.getElementById('successMessage');
