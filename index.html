@@ -221,7 +221,7 @@
             ✅ ROT-avdrag gäller för många av våra tjänster.
         </p>
         
-        <form action="https://formsubmit.co/nadi@post.com" method="POST" id="contactForm">
+        <form action="https://formsubmit.co/washup1@proton.me" method="POST" id="contactForm">
             
             <div class="form-row">
                 <label for="name">Namn *</label>
@@ -286,39 +286,10 @@
                     <span><strong>Jag vill bli kontaktad av Washup AB</strong> och godkänner att mina uppgifter behandlas enligt <a href="https://din.sajt/integritetspolicy" target="_blank">integritetspolicy</a> och GDPR. Samtycke kan återkallas när som helst.</span>
                 </label>
             </div>
-            
-            <!-- FormSubmit dolda fält -->
+
+            <!-- FormSubmit inställningar -->
             <input type="hidden" name="_subject" value="Ny offert-förfrågan från Washup AB">
-            <input type="hidden" name="_next" value=""> <!-- Tom = återvänder till samma sida -->
+            <input type="hidden" name="_next" value="">           <!-- Lämnas tom = återvänder till samma sida -->
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_template" value="table">
-
-            <div class="btn-row">
-                <button type="submit">Skicka förfrågan</button>
-            </div>
-        </form>
-        
-        <div id="successMessage" class="success">
-            ✅ Tack! Din förfrågan har skickats. Vi kontaktar dig inom kort.
-        </div>
-    </div>
-
-    <script>
-        const form = document.getElementById('contactForm');
-        const success = document.getElementById('successMessage');
-
-        form.addEventListener('submit', function() {
-            // Visa success-meddelande direkt efter submit
-            setTimeout(() => {
-                success.style.display = 'block';
-                
-                // Återställ formuläret efter 4 sekunder
-                setTimeout(() => {
-                    form.reset();
-                    success.style.display = 'none';
-                }, 4000);
-            }, 800);
-        });
-    </script>
-</body>
-</html>
+            <input type
