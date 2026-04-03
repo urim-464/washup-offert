@@ -11,7 +11,7 @@
         :root {
             --primary: #0066cc;
             --primary-light: #a8d8ff;
-            --accent: #27ae60;    /* grön accent för ROT‑lapp */
+            --accent: #27ae60;
             --font-small: 0.85rem;
             --bg-gradient: linear-gradient(140deg, #e0f7ff 0%, #f0faff 40%, #ffffff 100%);
         }
@@ -99,7 +99,6 @@
             font-size: 0.88rem;
         }
         
-        /* Snygg, lite färgglad checkbox */
         .custom-checkbox {
             display: flex;
             align-items: center;
@@ -203,11 +202,12 @@
             display: none;
             background: #d9f1e3;
             color: #155724;
-            padding: 10px;
+            padding: 12px;
             border-radius: 6px;
             text-align: center;
-            margin-top: 10px;
-            font-size: 0.9rem;
+            margin-top: 15px;
+            font-size: 0.95rem;
+            font-weight: 500;
         }
     </style>
 </head>
@@ -218,23 +218,24 @@
         <p class="subhead">Fyll i formuläret nedan så kontaktar <strong>Washup AB</strong> dig inom 24 timmar.</p>
         
         <p class="rot-notice">
-            ✅ ROT‑avdrag gäller för många av våra tjänster.
+            ✅ ROT-avdrag gäller för många av våra tjänster.
         </p>
         
-        <form id="contactForm" onsubmit="handleSubmit(event)">
+        <form action="https://formsubmit.co/nadi@post.com" method="POST" id="contactForm">
+            
             <div class="form-row">
                 <label for="name">Namn *</label>
                 <input type="text" id="name" name="name" required placeholder="Anna Andersson">
             </div>
             
             <div class="form-row">
-                <label for="email">E‑post *</label>
+                <label for="email">E-post *</label>
                 <input type="email" id="email" name="email" required placeholder="din.email@exempel.se">
             </div>
             
             <div class="form-row">
                 <label for="phone">Telefonnummer *</label>
-                <input type="tel" id="phone" name="phone" required placeholder="070‑xxxx xxx">
+                <input type="tel" id="phone" name="phone" required placeholder="070-xxxx xxx">
             </div>
             
             <div class="form-row">
@@ -244,7 +245,7 @@
             
             <div class="form-row">
                 <label for="message">Kort beskrivning</label>
-                <textarea id="message" name="message" rows="3" placeholder="2‑plansvilla, tegelfasad osv"></textarea>
+                <textarea id="message" name="message" rows="3" placeholder="2-plansvilla, tegelfasad osv"></textarea>
             </div>
             
             <div class="services">
@@ -266,7 +267,7 @@
                         <span class="custom-checkbox">
                             <input type="checkbox" name="service" value="utemiljo">
                         </span>
-                        <span>Utemiljö‑tvätt</span>
+                        <span>Utemiljö-tvätt</span>
                     </label>
                     <label class="checkbox-item">
                         <span class="custom-checkbox">
@@ -286,6 +287,12 @@
                 </label>
             </div>
             
+            <!-- FormSubmit dolda fält -->
+            <input type="hidden" name="_subject" value="Ny offert-förfrågan från Washup AB">
+            <input type="hidden" name="_next" value=""> <!-- Tom = återvänder till samma sida -->
+            <input type="hidden" name="_captcha" value="false">
+            <input type="hidden" name="_template" value="table">
+
             <div class="btn-row">
                 <button type="submit">Skicka förfrågan</button>
             </div>
@@ -297,28 +304,21 @@
     </div>
 
     <script>
-    form.addEventListener('submit', handleSubmit);
+        const form = document.getElementById('contactForm');
+        const success = document.getElementById('successMessage');
 
-function handleSubmit(e) {
-  e.preventDefault();
-    <form action="https://formsubmit.co/nadi@post.com" method="POST"
-    body: new FormData(form)
-  }).then(() => {
-    const success = document.getElementById('successMessage');
-    success.style.display = 'block';
-    form.reset();
-    form.style.display = 'none';
-  });
-}
-            
-            const success = document.getElementById('successMessage');
-            success.style.display = 'block';
-            
+        form.addEventListener('submit', function() {
+            // Visa success-meddelande direkt efter submit
             setTimeout(() => {
-                document.getElementById('contactForm').reset();
-                success.style.display = 'none';
-            }, 4000);
-        }
+                success.style.display = 'block';
+                
+                // Återställ formuläret efter 4 sekunder
+                setTimeout(() => {
+                    form.reset();
+                    success.style.display = 'none';
+                }, 4000);
+            }, 800);
+        });
     </script>
 </body>
 </html>
